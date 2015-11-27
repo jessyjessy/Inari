@@ -127,6 +127,18 @@ class ArticleManager extends Article {
 
         return $_confortArray;
     }
+    
+     public function insererDansPanier($idarticle,$idclient,$quantite,$prix_unitaire,$nom) {
+        try {
+            $query = "insert into panier(id_article,id_client,quantite,prix_unitaire,nom) values($idarticle,$idclient,$quantite,'$prix_unitaire','$nom');";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+        } catch (PDOException $e) {
+            print "Echec de la requ&ecirc;te " . $e->getMessage();
+        }
+
+        
+    }
 
 
 }

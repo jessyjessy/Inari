@@ -2,17 +2,36 @@
 <?php
 $mg = new ArticleManager($db);
 $liste_types = $mg->getListeTypes();
-
 $liste_articles = $mg->getListeArticles();
 //nombre d'élt du tableau de resultset
-
 $nbr = count($liste_types);
 $nbr2 = count($liste_articles);
-
-
-
-
 ?>
+
+
+<form action="<?php print $_SERVER['PHP_SELF']; ?>" method="get">
+ 
+      
+<?php
+  if (isset($_GET['ajouter'])) {
+$idarticle=1;
+$idclient=1;
+$quantite=3;
+$prix_unitaire=20.00;
+$nom='aaz';
+
+$mg->insererDansPanier(3,2,4,30.00,$nom);
+     
+      ?> 
+
+
+
+  
+  <?php
+  }
+?>
+</form>
+
 
 
 <form action="<?php print $_SERVER['PHP_SELF']; ?>" method="get">
@@ -52,9 +71,6 @@ for ($i = 0; $i < $nbr; $i++) {
     
 <?php
 if (isset($_GET['envoi_choix'])) {
-
-
-
     $liste_sous_types = $mg->getListeSousTypes($_GET['choix']);
     $nbr3 = count($liste_sous_types);
   
@@ -95,6 +111,13 @@ if (isset($_GET['envoi_choix'])) {
             <td>
 
                 <h2>Tous nos articles</h2>
+                       <?php 
+
+
+
+
+?>
+  
 <?php
 for ($i = 0; $i < $nbr2; $i++) {
 ?>
@@ -110,6 +133,46 @@ for ($i = 0; $i < $nbr2; $i++) {
                     <?php print $liste_articles[$i]->prix_vente; ?>
                     <br/>
                     <br/>
+
+<?php
+$type="submit";
+$nom="ajouter".$i;
+$value="ajouter".$i;
+$id="ajouter".$i;
+ 
+
+print "<input type={$type} name={$nom} value={$value} id={$id}/>";
+
+    
+?>
+
+
+<?php
+
+if (isset($_GET['ajouter'.$i])) {
+    
+ 
+    
+    //pour le moment l'id est entré en dur mais par après le site demandera à l'utilisateur de se connecter et retiendra ses coordonnées
+    $mg->insererDansPanier($liste_articles[$i]->id_article,2,5,$liste_articles[$i]->prix_vente,$liste_articles[$i]->nom_article);
+  //  id_article,id_client,quantite,prix_unitaire,nom)
+    
+}
+
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -154,7 +217,6 @@ if (isset($_GET['envoi_choix'])) {
 <?php
     
 }
-
 ?>
 <?php
 }
@@ -193,7 +255,6 @@ if (isset($_GET['envoi_choix2'])) {
 <?php
     
 }
-
 ?>
 <?php
 }
@@ -230,10 +291,7 @@ if (isset($_GET['rechercher'])) {
 <?php
     
 }
-
 ?>
 <?php
 }
 ?>
-
-
