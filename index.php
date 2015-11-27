@@ -28,6 +28,10 @@ foreach(glob('./admin/lib/js/jquery/*.js') as $js)  {
 <body>
     <section id="page">
         <header>
+           <?php
+           $login=null;
+           print ($_GET[$login]);
+           ?>
             <img src="./admin/images/banniereFE.jpg" alt="Pets-Sitting" />
         </header>
         <section id="colGauche">
