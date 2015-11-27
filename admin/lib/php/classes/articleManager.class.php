@@ -112,5 +112,21 @@ class ArticleManager extends Article {
         return $_confortArray;
  } 
  
+ public function getCompte($login) {
+        try {
+            $query = "select * from client where login = '$login'";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+        } catch (PDOException $e) {
+            print "Echec de la requ&ecirc;te " . $e->getMessage();
+        }
+
+        while ($data = $resultset->fetch()) {
+            $_confortArray[] = new Article($data);
+        }
+
+        return $_confortArray;
+    }
+
 
 }

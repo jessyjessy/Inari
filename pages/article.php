@@ -1,4 +1,4 @@
-<h2>D&eacute;couvrez nos atouts</h2>
+<h2>D&eacute;couvrez nos articles en vente</h2>
 <?php
 $mg = new ArticleManager($db);
 $liste_types = $mg->getListeTypes();
