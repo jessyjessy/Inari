@@ -139,6 +139,22 @@ class ArticleManager extends Article {
 
         
     }
+    
+    public function getContenuPanier($id_client) {
+        try {
+            $query = "select * from panier where id_client = $id_client ";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+        } catch (PDOException $e) {
+            print "Echec de la requ&ecirc;te " . $e->getMessage();
+        }
+
+        while ($data = $resultset->fetch()) {
+            $_confortArray[] = new Article($data);
+        }
+
+        return $_confortArray;
+    }
 
 
 }

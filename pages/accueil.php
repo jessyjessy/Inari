@@ -59,6 +59,7 @@ if (isset($_GET['valider'])) {
             print "mot de passe ok";
                print "Bonjour ".$client[0]->prenom_client;
             $_SESSION['login'] = $client[0]->login;
+              $_SESSION['id_client'] = $client[0]->id_client;
           
             
             ?>
