@@ -112,7 +112,11 @@ if (isset($_GET['envoi_choix'])) {
 
                 <h2>Tous nos articles</h2>
                        <?php 
-
+ 
+          if($_SESSION['login']<>null)
+           echo $_SESSION['login'];
+          
+                    
 
 
 

@@ -1,8 +1,11 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <?php
 include ('./lib/php/Pliste_include.php');
 $db = Connexion::getInstance($dsn,$user,$pass);
-session_start();
+
 $scripts= array();
 $i=0;
 foreach(glob('./admin/lib/js/jquery/*.js') as $js)  {
@@ -28,7 +31,11 @@ foreach(glob('./admin/lib/js/jquery/*.js') as $js)  {
 <body>
     <section id="page">
         <header>
-           
+          <?php
+          if($_SESSION['login']<>null)
+           echo $_SESSION['login'];
+          
+                    ?>
            
             <img src="./admin/images/banniereFE.jpg" alt="Pets-Sitting" />
         </header>
