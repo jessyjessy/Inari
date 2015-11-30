@@ -34,6 +34,8 @@ foreach(glob('./admin/lib/js/jquery/*.js') as $js)  {
           <?php
           if($_SESSION['login']<>null)
            echo $_SESSION['login'];
+          else
+              print "veuillez vous connecter";
           
                     ?>
            

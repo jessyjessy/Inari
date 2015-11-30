@@ -76,9 +76,9 @@
 <h1>Lexique</h1>
 
 
-<p>Vous n'êtes pas spécialisé dans la culture asiatique et certains termes de ce site vous échappent? <br/>
+<p>Vous n'êtes pas spécialisé(e) dans la culture asiatique et certains termes de ce site vous échappent? <br/>
 Il est vrai que le contexte de la culture asiatique possède des termes qui lui sont propres.<br/>
-Mais pas de panique, voici quelques définitions de mot selectionnée pour vous:</p>
+Mais pas de panique, voici quelques définitions de mot selectionnés pour vous:</p>
 
 
 <h2>Katana</h2>

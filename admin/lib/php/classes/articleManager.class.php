@@ -140,6 +140,32 @@ class ArticleManager extends Article {
         
     }
     
+    public function supprimerDuPanier($id_panier) {
+        try {
+            $query = "delete from panier where id_panier=$id_panier";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+        } catch (PDOException $e) {
+            print "Echec de la requ&ecirc;te " . $e->getMessage();
+        }
+
+        
+    }
+    
+        public function conclureUneVente($idarticle,$idclient,$quantite,$prix_unitaire) {
+        try {
+            $query = "insert into vente(id_article,id_client,quantite,prix_unitaire,date_facturation) values($idarticle,$idclient,$quantite,'$prix_unitaire',current_date);";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+        } catch (PDOException $e) {
+            print "Echec de la requ&ecirc;te " . $e->getMessage();
+        }
+
+        
+    }
+    
+    
+    
     public function getContenuPanier($id_client) {
         try {
             $query = "select * from panier where id_client = $id_client ";

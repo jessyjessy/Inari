@@ -11,25 +11,7 @@ $nbr2 = count($liste_articles);
 
 <form action="<?php print $_SERVER['PHP_SELF']; ?>" method="get">
  
-      
-<?php
-  if (isset($_GET['ajouter'])) {
-$idarticle=1;
-$idclient=1;
-$quantite=3;
-$prix_unitaire=20.00;
-$nom='aaz';
 
-$mg->insererDansPanier(3,2,4,30.00,$nom);
-     
-      ?> 
-
-
-
-  
-  <?php
-  }
-?>
 </form>
 
 
@@ -157,8 +139,8 @@ if (isset($_GET['ajouter'.$i])) {
     
  
     
-    //pour le moment l'id est entré en dur mais par après le site demandera à l'utilisateur de se connecter et retiendra ses coordonnées
-    $mg->insererDansPanier($liste_articles[$i]->id_article,2,5,$liste_articles[$i]->prix_vente,$liste_articles[$i]->nom_article);
+ 
+    $mg->insererDansPanier($liste_articles[$i]->id_article,$_SESSION['id_client'],5,$liste_articles[$i]->prix_vente,$liste_articles[$i]->nom_article);
   //  id_article,id_client,quantite,prix_unitaire,nom)
     
 }
