@@ -182,5 +182,53 @@ class ArticleManager extends Article {
         return $_confortArray;
     }
 
+    public function getListePays() {
+        try {
+            $query = "select * from pays";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+        } catch (PDOException $e) {
+            print "Echec de la requ&ecirc;te " . $e->getMessage();
+        }
+
+        while ($data = $resultset->fetch()) {
+            $_confortArray[] = new Article($data);
+        }
+
+        return $_confortArray;
+    }
+    
+      public function ajouterClient($id_pays,$login,$mot_de_passe,$nom_client,$prenom_client,$rue,$numero,$cp,$localite,$mail,$sexe,$age) {
+        try {
+            $query = "select ajout_client($id_pays,'$login','$mot_de_passe','$nom_client','$prenom_client','$rue','$numero',$cp,'$localite','$mail','$sexe',$age)";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+        } catch (PDOException $e) {
+            print "Echec de la requ&ecirc;te " . $e->getMessage();
+        }
+
+    }
+    
+    public function MAJclient($id_pays,$login,$mot_de_passe,$nom_client,$prenom_client,$rue,$numero,$cp,$localite,$mail,$sexe,$age,$id_client) {
+        try {
+            $query = "select MAJ_client($id_pays,'$login','$mot_de_passe','$nom_client','$prenom_client','$rue','$numero',$cp,'$localite','$mail','$sexe',$age,$id_client)";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+        } catch (PDOException $e) {
+            print "Echec de la requ&ecirc;te " . $e->getMessage();
+        }
+
+    }
+    
+     public function supprimerClient($id_client) {
+        try {
+            $query = "select supprimer_client($id_client)";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+        } catch (PDOException $e) {
+            print "Echec de la requ&ecirc;te " . $e->getMessage();
+        }
+
+    }
 
 }
