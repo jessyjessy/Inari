@@ -31,7 +31,11 @@ foreach(glob('./admin/lib/js/jquery/*.js') as $js)  {
 <body>
     <section id="page">
         <header>
+         
           <?php
+          
+          
+         
           if($_SESSION['login']<>null)
            echo $_SESSION['login'];
           else

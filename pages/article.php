@@ -115,10 +115,30 @@ for ($i = 0; $i < $nbr2; $i++) {
                     <?php print $liste_articles[$i]->description; ?>
                     <br/>
                     <?php print $liste_articles[$i]->quantite_en_stock; ?>
+                    
+                        <?php
+                    $quantite_max=$liste_articles[$i]->quantite_en_stock; ?>
+                    
                     <br/>
                     <?php print $liste_articles[$i]->prix_vente; ?>
                     <br/>
                     <br/>
+                      <select name="quantite_voulu" id="quantite_voulu"> 
+                    <option value="">Combien?</option>
+                    <?php
+                    for ($i2 = 0; $i2 < $quantite_max; $i2++) {
+                        ?>
+                        <option value="<?php $i2+1; ?>"> 
+                            <?php print $i2+1; ?>
+                            
+                        </option>
+                        <?php
+                    }
+                    
+                    ?>
+                </select>
+                    
+                   
 
 <?php
 $type="submit";
@@ -140,7 +160,7 @@ if (isset($_GET['ajouter'.$i])) {
  
     
  
-    $mg->insererDansPanier($liste_articles[$i]->id_article,$_SESSION['id_client'],5,$liste_articles[$i]->prix_vente,$liste_articles[$i]->nom_article);
+    $mg->insererDansPanier($liste_articles[$i]->id_article,$_SESSION['id_client'],7,$liste_articles[$i]->prix_vente,$liste_articles[$i]->nom_article);
   //  id_article,id_client,quantite,prix_unitaire,nom)
     
 }

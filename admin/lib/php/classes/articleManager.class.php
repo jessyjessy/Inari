@@ -230,5 +230,39 @@ class ArticleManager extends Article {
         }
 
     }
+    
+     public function getTopClient() {
+        try {
+            $query = "select * from client order by total_achat desc";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+        } catch (PDOException $e) {
+            print "Echec de la requ&ecirc;te " . $e->getMessage();
+        }
+
+        while ($data = $resultset->fetch()) {
+            $_confortArray[] = new Article($data);
+        }
+
+        return $_confortArray;
+    }
+    
+       public function getTotalVente() {
+        try {
+            $query = "select * from total_vente";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+        } catch (PDOException $e) {
+            print "Echec de la requ&ecirc;te " . $e->getMessage();
+        }
+
+        while ($data = $resultset->fetch()) {
+            $_confortArray[] = new Article($data);
+        }
+
+        return $_confortArray;
+    }
+    
+   
 
 }
