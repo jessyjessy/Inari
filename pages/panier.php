@@ -61,7 +61,7 @@ for ($i = 0; $i < $nbr; $i++) {
 
 
         <input type="button" name="recalculer" id="recalculer" value="RECALCULER" onclick="check();" />
-          <?php print "prix total:   $somme  € "; ?>
+          <?php print "prix total:   $somme  € "; ?> 
         <p id="sommeEssai"></p>
     <input type="submit" name="valider_achats" id="valider_achats" value="VALIDER" />
 
@@ -76,6 +76,13 @@ for ($i = 0; $i < $nbr; $i++) {
             if (isset($_GET[$nom2])) {
 
                 $mg->conclureUneVente($contenu_panier[$i]->id_article, $_SESSION['id_client'], $contenu_panier[$i]->quantite, $contenu_panier[$i]->prix_unitaire);
+                $mg->supprimerDuPanier($_SESSION['id_client']);
+                $mg->Prix_total_vente();
+                $mg->Actualiser_total_client();
+                $mg->Actualiser_le_stock($contenu_panier[$i]->id_article, $contenu_panier[$i]->quantite);
+                
+                
+                
             }
         }
     }

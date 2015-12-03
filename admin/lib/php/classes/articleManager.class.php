@@ -140,9 +140,9 @@ class ArticleManager extends Article {
         
     }
     
-    public function supprimerDuPanier($id_panier) {
+    public function supprimerDuPanier($id_client) {
         try {
-            $query = "delete from panier where id_panier=$id_panier";
+            $query = "delete from panier where id_client=$id_client";
             $resultset = $this->_db->prepare($query);
             $resultset->execute();
         } catch (PDOException $e) {
@@ -163,6 +163,7 @@ class ArticleManager extends Article {
 
         
     }
+    
     
     
     
@@ -263,6 +264,51 @@ class ArticleManager extends Article {
         return $_confortArray;
     }
     
+  
+    
+     public function Prix_total_panier() {
+        try {
+            $query = "UPDATE panier SET prix_total=prix_unitaire*quantite";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+        } catch (PDOException $e) {
+            print "Echec de la requ&ecirc;te " . $e->getMessage();
+        }
+
+    }
+    
+     public function Prix_total_vente() {
+        try {
+            $query = "UPDATE vente SET prix_total=prix_unitaire*quantite";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+        } catch (PDOException $e) {
+            print "Echec de la requ&ecirc;te " . $e->getMessage();
+        }
+
+    }
    
+      public function Actualiser_total_client() {
+        try {
+            $query = "update client set total_achat=total_somme.sum from total_somme where client.id_client=total_somme.id_client";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+        } catch (PDOException $e) {
+            print "Echec de la requ&ecirc;te " . $e->getMessage();
+        }
+
+    }
+    
+      public function Actualiser_le_stock($id_article, $en_moins) {
+        try {
+            $query = "update stock set quantite_en_stock=quantite_en_stock-$en_moins where id_article=$id_article";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+        } catch (PDOException $e) {
+            print "Echec de la requ&ecirc;te " . $e->getMessage();
+        }
+
+    }
+    
 
 }

@@ -76,9 +76,14 @@
 <h1>Lexique</h1>
 
 
+
 <p>Vous n'êtes pas spécialisé(e) dans la culture asiatique et certains termes de ce site vous échappent? <br/>
 Il est vrai que le contexte de la culture asiatique possède des termes qui lui sont propres.<br/>
 Mais pas de panique, voici quelques définitions de mot selectionnés pour vous:</p>
+
+<h2>Inari</h2>
+
+<p>Inari... peut-être que vous vous demandez d'où vient le nom du site. Pour votre information sachez alors qu'Inari est le nom du dieu du commerce de la mythologie japonaise.</p>
 
 
 <h2>Katana</h2>

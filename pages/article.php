@@ -124,7 +124,7 @@ for ($i = 0; $i < $nbr2; $i++) {
                     <br/>
                     <br/>
                       <select name="quantite_voulu" id="quantite_voulu"> 
-                    <option value="">Combien?</option>
+                   
                     <?php
                     for ($i2 = 0; $i2 < $quantite_max; $i2++) {
                         ?>
@@ -145,6 +145,7 @@ $type="submit";
 $nom="ajouter".$i;
 $value="ajouter".$i;
 $id="ajouter".$i;
+
  
 
 print "<input type={$type} name={$nom} value={$value} id={$id}/>";
@@ -160,8 +161,9 @@ if (isset($_GET['ajouter'.$i])) {
  
     
  
-    $mg->insererDansPanier($liste_articles[$i]->id_article,$_SESSION['id_client'],7,$liste_articles[$i]->prix_vente,$liste_articles[$i]->nom_article);
-  //  id_article,id_client,quantite,prix_unitaire,nom)
+    $mg->insererDansPanier($liste_articles[$i]->id_article,$_SESSION['id_client'],3,$liste_articles[$i]->prix_vente,$liste_articles[$i]->nom_article);
+$mg->Prix_total_panier();
+//  id_article,id_client,quantite,prix_unitaire,nom)
     
 }
 
