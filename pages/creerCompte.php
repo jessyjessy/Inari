@@ -14,7 +14,7 @@ $nbr = count($liste_pays);
         </tr>
         <tr>
             <td>Mot de passe : </td>
-            <td><input type="text" name="mot_de_passe" id="mot_de_passe" /></td>
+            <td><input type="password" name="mot_de_passe" id="mot_de_passe" /></td>
         </tr>
         <tr>
             <td>Nom : </td>

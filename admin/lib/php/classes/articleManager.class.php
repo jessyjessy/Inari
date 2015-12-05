@@ -11,11 +11,31 @@ class ArticleManager extends Article {
 
     public function getListeArticles() {
         try {
-            $query = "select * from stock order by description";
+            $query = "select id_article,nom_article, description_type_article, sous_type_article.description sous_type, quantite_en_stock, prix_vente, stock.description
+from stock, type_article, sous_type_article
+where stock.id_sous_type_article=sous_type_article.id_sous_type_article and
+sous_type_article.type_article=type_article.id_type_article
+order by description_type_article, sous_type_article.description, stock.nom_article";
             $resultset = $this->_db->prepare($query);
             $resultset->execute();
         } catch (PDOException $e) {
-            print "Echec de la requ&ecirc;te " . $e->getMessage();
+           print "Echec de la requ&ecirc;te " . $e->getMessage();
+        }
+
+        while ($data = $resultset->fetch()) {
+            $_confortArray[] = new Article($data);
+        }
+
+        return $_confortArray;
+    }
+    
+    public function getListeArticles2() {
+        try {
+            $query = "select * from stock";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+        } catch (PDOException $e) {
+           print "Echec de la requ&ecirc;te " . $e->getMessage();
         }
 
         while ($data = $resultset->fetch()) {
@@ -310,5 +330,68 @@ class ArticleManager extends Article {
 
     }
     
+     public function getProduitsLesMieuxVendus() {
+        try {
+            $query = "select * from produits_les_mieux_vendus";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+        } catch (PDOException $e) {
+            print "Echec de la requ&ecirc;te " . $e->getMessage();
+        }
+
+        while ($data = $resultset->fetch()) {
+            $_confortArray[] = new Article($data);
+        }
+
+        return $_confortArray;
+    }
+    
+    public function getBenefices() {
+        try {
+            $query = "select nom_article, sum((prix_vente-prix_achat)*vente.quantite) benefice from stock, vente where stock.id_article=vente.id_article group by nom_article order by benefice desc";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+        } catch (PDOException $e) {
+            print "Echec de la requ&ecirc;te " . $e->getMessage();
+        }
+
+        while ($data = $resultset->fetch()) {
+            $_confortArray[] = new Article($data);
+        }
+
+        return $_confortArray;
+    }
+    
+     public function getListeFournisseur() {
+        try {
+            $query = "select * from fournisseur order by nom_fournisseur";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+        } catch (PDOException $e) {
+            print "Echec de la requ&ecirc;te " . $e->getMessage();
+        }
+
+        while ($data = $resultset->fetch()) {
+            $_confortArray[] = new Article($data);
+        }
+
+        return $_confortArray;
+    }
+    
+     public function getListeSousType() {
+        try {
+            $query = "select * from sous_type_article order by description";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+        } catch (PDOException $e) {
+            print "Echec de la requ&ecirc;te " . $e->getMessage();
+        }
+
+        while ($data = $resultset->fetch()) {
+            $_confortArray[] = new Article($data);
+        }
+
+        return $_confortArray;
+    }
 
 }

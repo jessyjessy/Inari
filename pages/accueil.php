@@ -16,7 +16,7 @@ $mg = new ArticleManager($db);
         </tr>
         <tr>
             <td>Votre mot de passe : </td>
-            <td><input type="text" name="mot_de_passe" id="mot_de_passe" /></td>
+            <td><input type="password" name="mot_de_passe" id="mot_de_passe" /></td>
         </tr>
         <tr>
             <td>

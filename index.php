@@ -43,7 +43,7 @@ foreach(glob('./admin/lib/js/jquery/*.js') as $js)  {
           
                     ?>
            
-            <img src="./admin/images/banniereFE.jpg" alt="Pets-Sitting" />
+            <img src="./admin/images/banniere.jpg" alt="Pets-Sitting" />
         </header>
         <section id="colGauche">
             <nav>

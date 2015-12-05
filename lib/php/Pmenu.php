@@ -6,4 +6,5 @@
     <li class="bottomLine"> <a href="index.php?page=creerCompte">Créer un compte</a></li>
     <li class="bottomLine"> <a href="index.php?page=majCompte">Mettre à jour mon compte</a></li>
     <li class="bottomLine"> <a href="index.php?page=fiche_proprietaire">Zone proprietaire</a></li>
+    <li class="bottomLine"> <a href="index.php?page=gerer_le_stock">Gestion du stock</a></li>
 </ul>
